@@ -16,12 +16,12 @@
 		<div class="row">
 			<div class="col-lg-6 form-block px-4">
 				<div class="col-lg-8 col-md-6 col-sm-8 col-xs-12 form-box">
-					<h4 class="text-center mb-4">
-						Заголовок вашей формы
-					</h4>
-					<form method="post">
-                        {% csrf_token %}
+					<h5 class="text-center mb-4">
+						   Заголовок вашей формы
+					</h5>
 						<!-- Запишите здесь тег {% csrf_token %} -->
+						<form action="" method="post">
+    						{% csrf_token %}
 
                         <label for="my_text">Введи своё имя</label>  <!--for="my_text" это привязка к объекту с id="my_text", id - всегда должен быть уникален во всем HTML документе-->
                         <div class="form-input">  <!-- Блок для оборачивания строки формы -->
@@ -47,17 +47,41 @@
                         <!-- Добавьте своих полей --------------------------------------------------------------------->
                         <!-- Сформируйте и заполните нужные строки ввода (оберните их <div class="form-input"> как показано выше. Это нужно чтобы были одинаковые стили)-->
 
-                        <!---- Добавьте еще поле для ввода email (придумайте текст для label)---->
-
+                         <label for="my_email">Введи свой Email</label>
+                        <div class="form-input">  <!-- Блок для оборачивания строки формы -->
+                            <span><i class="fa fa fa-at "></i></span>  <!-- Fontawesom картинка в строке ввода-->
+							<input type="email" id="my_email" name="my_email" placeholder="Ivan@mail.ru" required>  <!-- Строка ввода-->
+						</div>
                         <!---- Добавьте еще поле для ввода пароля (придумайте текст для label)---->
-
+						<label for="my_password">Введи свой пароль</label>
+                        <div class="form-input">  <!-- Блок для оборачивания строки формы -->
+                            <span><i class="fa fa-unlock-alt "></i></span>  <!-- Fontawesom картинка в строке ввода-->
+							<input type="password" id="my_password" name="my_password" placeholder="Ваш пароль" required>
+						</div>
                         <!---- Добавьте еще поле для ввода даты (придумайте текст для label)---->
-
+						<label for="my_date">Введи дату рождения</label>
+                        <div class="form-input">  <!-- Блок для оборачивания строки формы -->
+                            <span><i class="fa fa-magic "></i></span>  <!-- Fontawesom картинка в строке ввода-->
+							<input type="date" id="my_date" name="my_date"  required>
+						</div>
                         <!---- Добавьте еще поле для ввода целого значения (придумайте текст для label)---->
-
+						<label for="my_number">Введи свой номер телефона</label>
+                        <div class="form-input">  <!-- Блок для оборачивания строки формы -->
+                            <span><i class="fa fa-phone-square"></i></span>  <!-- Fontawesom картинка в строке ввода-->
+							<input type="number" id="my_number" name="my_number" placeholder="89845553456" required>
+						</div>
                         <!---- Добавьте еще поле для переключателя checkbox (придумайте текст для label)---->
+						<label for="my_checkbox">Подтверди согласие на обработку данных</label>
+                        <div class="form-input">  <!-- Блок для оборачивания строки формы -->
+                            <span><i class="fa fa-space-shuttle "></i></span>  <!-- Fontawesom картинка в строке ввода-->
+							<input type="checkbox" id="my_checkbox" name="my_checkbox" placeholder="" required>
+						</div>
                         <!--------------------------------------------------------------------------------------------->
-
+						{% if form.errors %}
+    						<div class="mb-3 d-flex align-items-center">
+								<span style="color: red; font-size: 16px">{{ form.errors }}</span>
+    						</div>
+						{% endif %}
                         <!-- В форме всегда присутствует кнопка чтобы что-то отправить. Кнопку не изменять! -->
 						<div class="mb-3"> 
 							<button type="submit" class="btn btn-block">
