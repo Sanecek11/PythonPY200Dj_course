@@ -19,7 +19,7 @@ class TemplView(View):
         user_agent = request.META.get('HTTP_USER_AGENT')
 
         form = TemplateForm(received_data)
-        name = email = message = ''  # Default values in case form is not valid
+        name = email = message = ''
         if form.is_valid():
             name = form.cleaned_data.get("name")
             email = form.cleaned_data.get("email")
